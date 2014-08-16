@@ -2,7 +2,8 @@ OneMonthStripe::Application.routes.draw do
 
   root 'pages#home'
 
-
+  # Support stripe payments through charges
+  resources :charges
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
