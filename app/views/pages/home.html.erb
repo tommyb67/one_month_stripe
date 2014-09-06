@@ -10,7 +10,7 @@
               <script src="https://checkout.stripe.com/checkout.js"></script>
               <%= hidden_field_tag 'stripeToken' %>
               <%= hidden_field_tag 'stripeEmail' %>
-              <%= hidden_field_tag 'amount', 499 %>
+              <%= hidden_field_tag 'amount', @product.price %>
               <button id='btn-buy' type='button' class='btn btn-success btn-lg btn-block'><span class="glyphicon glyphicon-ok"></span>I want this!</button>
 
               <script>
@@ -26,7 +26,7 @@
                 document.getElementById('btn-buy').addEventListener('click', function(e) {
                   handler.open({
                     name: 'One Month',
-                    description: 'Growth Hacking Crash Course ($4.99)',
+                    description: '<%= @product.title %> <%= @product.subtitle %> (<%= @product.price %>)',
                     amount: document.getElementById('amount').value
                   });
                   e.preventDefault();
@@ -58,7 +58,7 @@ Made by <a href="http://onemonth.com" target="_blank"><%= image_tag('one-month-l
       </div>
       <div class="modal-body clearfix">
             <div id="modal-left" class="pull-left">
-                <p><strong>Mattan Griffel</strong></p>
+                <p><strong><%= @product.author %></strong></p>
                 <p>Hey, I'm Mattan Griffel, co-founder of the Y Combinator backed <a href="http://www.onemonth.com" target="_blank">One Month</a> where I teach the best selling One Month Rails and One Month Growth Hacking.</p>
                 <p>Why take my class? In the past I've advised companies like Pepsico, Bloomberg, GM, NYSE, and JPMorgan on growth hacking best practices. I've also spoken at New York University, Cooper Union and First Round Capital. My goal is to help you and other entrepreneurs rapidly grow your business.
                 </p>
